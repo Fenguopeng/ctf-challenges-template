@@ -1,3 +1,4 @@
+# 基础镜像，根据题目实际情况进行修改
 FROM ubuntu:16.04
 
 RUN sed -i 's#http://archive.ubuntu.com/ubuntu/#http://mirrors.aliyun.com/ubuntu/#' /etc/apt/sources.list \
