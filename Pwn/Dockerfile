@@ -34,9 +34,7 @@ COPY ./bin/ /home/ctf/
 
 RUN chown -R root:ctf /home/ctf \
     && chmod -R 750 /home/ctf \
-    && chmod +x /tmp/files/start.sh
-
-USER ctf
+    && chmod +x /tmp/files/start.sh /tmp/files/flag.sh
 
 CMD ["/tmp/files/start.sh"]
 
