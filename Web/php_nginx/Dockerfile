@@ -1,6 +1,20 @@
 # 请务必保证能从 hub.docker.com 上拉取下来。
 # 尽量使用下载量高的官方认证镜像。
-FROM php:5.6-apache
+FROM php:7.4-fpm
+
+# 更改 APT 源为阿里云镜像源
+# php:5.6-apache Debian 版本为 9.x stretch，源已归档，URL格式与最新的不同
+#RUN echo "deb http://mirrors.aliyun.com/debian-archive/debian stretch main contrib non-free" > /etc/apt/sources.list
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list 
+
+# 更新 apt-get 并安装 nginx
+RUN apt-get update \
+    && apt-get install -y nginx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# 拷贝nginx配置文件
+COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
 # 拷贝支撑文件到临时目录。
 COPY _files /tmp/files/

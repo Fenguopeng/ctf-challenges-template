@@ -8,7 +8,13 @@ FROM php:7.4-apache
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list 
 
 # 更新 apt-get 并安装 mariadb-server
-RUN apt-get update && apt-get install -y mariadb-server
+RUN apt-get update \
+    && apt-get install -y mariadb-server \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# 拷贝数据库初始化脚本
+COPY data/db.sql /tmp/db.sql
 
 # 拷贝支撑文件到临时目录。
 COPY _files /tmp/files/
