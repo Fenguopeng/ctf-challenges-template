@@ -8,5 +8,5 @@ if [[ -f /tmp/files/flag.sh ]]; then
 	rm -f /tmp/files/flag.sh
 fi
 
-# 启动 Apache2 网站服务器
-apache2-foreground
+# 运行Flask应用
+python /var/www/html/app.py

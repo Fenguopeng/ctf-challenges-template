@@ -16,10 +16,10 @@ RUN apt-get update \
 # 拷贝nginx配置文件
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
-# 拷贝支撑文件到临时目录。
+# 拷贝支撑文件到临时目录
 COPY _files /tmp/files/
 
-# 拷贝源码到相应目录下。
+# 拷贝网站源代码到相应目录下
 COPY src /var/www/html/
 
 # 执行命令，设置权限，安装依赖等。
