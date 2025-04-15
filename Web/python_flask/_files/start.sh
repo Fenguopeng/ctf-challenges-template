@@ -9,4 +9,4 @@ if [[ -f /tmp/files/flag.sh ]]; then
 fi
 
 # 运行Flask应用
-python /var/www/html/app.py
+python /app/app.py
